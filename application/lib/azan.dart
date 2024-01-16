@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 class AzanScreen extends StatelessWidget {
   final Coordinates myCoordinates = Coordinates(3.1390, 101.6869);
   final CalculationMethod calculationMethod = CalculationMethod.north_america;
-  final Duration utcOffset = Duration(hours: 8); // Replace with your local UTC offset
+  final Duration utcOffset = Duration(hours: 8); // local UTC offset
 
   @override
   Widget build(BuildContext context) {
