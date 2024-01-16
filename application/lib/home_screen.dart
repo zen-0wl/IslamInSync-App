@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'islamicalendar.dart';
 import 'azan_qiblat.dart';
 import 'quotes_screen.dart';
 import 'profile_screen.dart';
@@ -6,21 +7,50 @@ import 'duas_screen.dart';
 import 'surahs_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  final IslamicCalendarService calendarService = IslamicCalendarService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Soulful Serenity: Islamic Reflections"),
         centerTitle: true,
+        actions: [
+          // Fetch and display Islamic date in the app bar
+          FutureBuilder(
+            future: calendarService.getIslamicDate(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return SizedBox.shrink();
+              } else if (snapshot.hasError) {
+                return SizedBox.shrink();
+              } else {
+                String? islamicDate = snapshot.data;
+                return Padding(
+                  padding: const EdgeInsets.only(right: 16.0),
+                  child: Text(
+                    "Islamic Date: $islamicDate",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                );
+              }
+            },
+          ),
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Title at the top center"),
+
+          Text("IslamInSync"),
+          // Circle icon at the top
           CircleAvatar(
             radius: 50,
             child: Icon(Icons.add), // Placeholder icon
           ),
+          SizedBox(height: 16),
+
+          // Azan and Qiblat in one row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -30,11 +60,17 @@ class HomeScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => AzanQiblatScreen()),
                 );
               }),
+              SizedBox(width: 16), // Add some spacing
               ClickableRectangle("Qiblat", () {
                 // Handle Qiblat click
               }),
             ],
           ),
+
+          // more spacing between Azan and 99 Allah's Names
+          SizedBox(height: 16),
+
+          // 99 Allah's Names and Quotes in one row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -44,14 +80,15 @@ class HomeScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => NamesQuotesScreen()),
                 );
               }),
-              ClickableRectangle("Quotes", () {
-                // Handle Quotes click
+              SizedBox(width: 14), // Add some spacing
+              ClickableRectangle("Quote", () {
+                // Handle Quote click
               }),
             ],
           ),
-          NavigationBar(),
         ],
       ),
+      bottomNavigationBar: NavigationBar(),
     );
   }
 }
