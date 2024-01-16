@@ -56,6 +56,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
@@ -116,6 +122,18 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_core-24.1.45",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_flutter_datepicker",
+      "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_datepicker-24.1.45",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "term_glyph",
       "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/term_glyph-1.2.1",
       "packageUri": "lib/",
@@ -146,7 +164,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-01-14T10:46:53.781076Z",
+  "generated": "2024-01-16T18:21:26.054955Z",
   "generator": "pub",
   "generatorVersion": "3.2.4"
 }

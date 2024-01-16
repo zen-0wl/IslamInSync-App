@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'islamicalendar.dart';
-import 'azan_qiblat.dart';
-import 'quotes_screen.dart';
+import 'azan.dart';
+import 'name_screen.dart';
 import 'profile_screen.dart';
 import 'duas_screen.dart';
 import 'surahs_screen.dart';
+import 'qiblah.dart';
+import 'quotes_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final IslamicCalendarService calendarService = IslamicCalendarService();
@@ -13,35 +16,49 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Soulful Serenity: Islamic Reflections"),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Soulful Serenity: Islamic Reflections", style: TextStyle(fontSize: 20)),
+            // Adding SfHijriDateRangePicker
+            Container(
+              height: 300, // Adjust the height as needed
+              child: SfHijriDateRangePicker(
+                view: HijriDatePickerView.month,
+                selectionMode: DateRangePickerSelectionMode.single,
+                showTodayButton: true,
+                initialSelectedDate: HijriDateTime.now(),
+                minDate: HijriDateTime(1440, 1, 1),
+                maxDate: HijriDateTime(1500, 12, 30),
+                showNavigationArrow: true,
+                showActionButtons: true,
+                selectionColor: Colors.blue,
+                startRangeSelectionColor: Colors.blue.withOpacity(0.5),
+                endRangeSelectionColor: Colors.blue.withOpacity(0.5),
+                rangeSelectionColor: Colors.blue.withOpacity(0.3),
+                selectionTextStyle: TextStyle(color: Colors.white),
+                rangeTextStyle: TextStyle(color: Colors.white),
+                monthCellStyle: DateRangePickerMonthCellStyle(
+                  todayTextStyle: TextStyle(color: Colors.red),
+                ),
+                onViewChanged: (HijriDatePickerViewChangedArgs args) {
+                  // Handle view change
+                  print("Current view: ${args.view}");
+                },
+                onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
+                  // Handle date selection
+                  HijriDateTime selectedDate = args.value;
+                  print("Selected Islamic Date: ${selectedDate.toString()}");
+                },
+              ),
+            ),
+          ],
+        ),
         centerTitle: true,
-        actions: [
-          // Fetch and display Islamic date in the app bar
-          FutureBuilder(
-            future: calendarService.getIslamicDate(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return SizedBox.shrink();
-              } else if (snapshot.hasError) {
-                return SizedBox.shrink();
-              } else {
-                String? islamicDate = snapshot.data;
-                return Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: Text(
-                    "Islamic Date: $islamicDate",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                );
-              }
-            },
-          ),
-        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
           Text("IslamInSync"),
           // Circle icon at the top
           CircleAvatar(

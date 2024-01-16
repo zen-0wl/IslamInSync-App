@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class AzanQiblatScreen extends StatelessWidget {
+class NamesQuotesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Azan and Qiblat"),
+        title: Text("99 Allah's Names"),
         centerTitle: true,
       ),
       body: Center(
-        child: Text("Azan and Qiblat Content"),
+        child: Text("Names Content"),
       ),
     );
   }
