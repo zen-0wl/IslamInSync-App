@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class DuasScreen extends StatelessWidget {
+  const DuasScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Duas"),
+        title: const Text("Duas"),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text("Duas Content"),
       ),
     );

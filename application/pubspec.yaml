@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.2.4 <4.0.0'
 
 dependencies:
+  adhan: ^2.0.0+1
   flutter:
     sdk: flutter
   syncfusion_flutter_datepicker: ^24.1.45

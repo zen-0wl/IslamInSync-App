@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "adhan",
+      "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/adhan-2.0.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "async",
       "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/async-2.11.0",
       "packageUri": "lib/",
@@ -164,7 +170,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-01-16T18:21:26.054955Z",
+  "generated": "2024-01-16T20:23:50.474053Z",
   "generator": "pub",
   "generatorVersion": "3.2.4"
 }

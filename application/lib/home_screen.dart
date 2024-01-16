@@ -3,109 +3,97 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'islamicalendar.dart';
 import 'azan.dart';
 import 'name_screen.dart';
-import 'profile_screen.dart';
-import 'duas_screen.dart';
-import 'surahs_screen.dart';
-import 'qiblah.dart';
-import 'quotes_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final IslamicCalendarService calendarService = IslamicCalendarService();
+
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Soulful Serenity: Islamic Reflections", style: TextStyle(fontSize: 20)),
-            // Adding SfHijriDateRangePicker
-            Container(
-              height: 300, // Adjust the height as needed
-              child: SfHijriDateRangePicker(
-                view: HijriDatePickerView.month,
-                selectionMode: DateRangePickerSelectionMode.single,
-                showTodayButton: true,
-                initialSelectedDate: HijriDateTime.now(),
-                minDate: HijriDateTime(1440, 1, 1),
-                maxDate: HijriDateTime(1500, 12, 30),
-                showNavigationArrow: true,
-                showActionButtons: true,
-                selectionColor: Colors.blue,
-                startRangeSelectionColor: Colors.blue.withOpacity(0.5),
-                endRangeSelectionColor: Colors.blue.withOpacity(0.5),
-                rangeSelectionColor: Colors.blue.withOpacity(0.3),
-                selectionTextStyle: TextStyle(color: Colors.white),
-                rangeTextStyle: TextStyle(color: Colors.white),
-                monthCellStyle: DateRangePickerMonthCellStyle(
-                  todayTextStyle: TextStyle(color: Colors.red),
-                ),
-                onViewChanged: (HijriDatePickerViewChangedArgs args) {
-                  // Handle view change
-                  print("Current view: ${args.view}");
-                },
-                onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
-                  // Handle date selection
-                  HijriDateTime selectedDate = args.value;
-                  print("Selected Islamic Date: ${selectedDate.toString()}");
-                },
-              ),
-            ),
-          ],
-        ),
+        title: const Text("Soulful Serenity: Islamic Reflections", style: TextStyle(fontSize: 20)),
         centerTitle: true,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("IslamInSync"),
-          // Circle icon at the top
-          CircleAvatar(
-            radius: 50,
-            child: Icon(Icons.add), // Placeholder icon
-          ),
-          SizedBox(height: 16),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Adding SfHijriDateRangePicker
+            SfHijriDateRangePicker(
+              view: HijriDatePickerView.month,
+              selectionMode: DateRangePickerSelectionMode.single,
+              showTodayButton: true,
+              showNavigationArrow: true,
+              showActionButtons: true,
+              selectionColor: Colors.blue,
+              startRangeSelectionColor: Colors.blue.withOpacity(0.5),
+              endRangeSelectionColor: Colors.blue.withOpacity(0.5),
+              rangeSelectionColor: Colors.blue.withOpacity(0.3),
+              selectionTextStyle: const TextStyle(color: Colors.white),
+              rangeTextStyle: const TextStyle(color: Colors.white),
+              onViewChanged: (HijriDatePickerViewChangedArgs args) {
+                // Handle view change
+                print("Current view: ${args.view}");
+              },
+              onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
+                // Handle date selection
+              },
+            ),
 
-          // Azan and Qiblat in one row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ClickableRectangle("Azan", () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AzanQiblatScreen()),
-                );
-              }),
-              SizedBox(width: 16), // Add some spacing
-              ClickableRectangle("Qiblat", () {
-                // Handle Qiblat click
-              }),
-            ],
-          ),
+            const SizedBox(height: 16),
 
-          // more spacing between Azan and 99 Allah's Names
-          SizedBox(height: 16),
+            const Text("IslamInSync"),
+            const SizedBox(height: 16),
 
-          // 99 Allah's Names and Quotes in one row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ClickableRectangle("99 Allah's Names", () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NamesQuotesScreen()),
-                );
-              }),
-              SizedBox(width: 14), // Add some spacing
-              ClickableRectangle("Quote", () {
-                // Handle Quote click
-              }),
-            ],
-          ),
+            // Circle icon at the top
+            const CircleAvatar(
+              radius: 50,
+              child: Icon(Icons.add), // Placeholder icon
+            ),
+
+            const SizedBox(height: 16),
+
+            // Azan and Qiblat in one row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ClickableRectangle("Azan", () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AzanScreen()),
+            );
+          }, Color.fromARGB(255, 225, 210, 250)),
+          const SizedBox(width: 16), // Add some spacing
+          
+          ClickableRectangle("Qiblat", () {
+           // Handle Qiblat click
+         }, const Color.fromARGB(255, 225, 210, 250)),
         ],
+        ),
+            // more spacing between Azan and 99 Allah's Names
+            const SizedBox(height: 16),
+            // 99 Allah's Names and Quotes in one row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ClickableRectangle("99 Allah's Names", () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NamesQuotesScreen()),
+                    );
+                    }, Color.fromARGB(255, 225, 210, 250)),
+                    const SizedBox(width: 14), // Add some spacing
+                    ClickableRectangle("Quote", () {
+                  // Handle Quote click
+                  }, const Color.fromARGB(255, 225, 210, 250)),
+                ],
+               ),
+
+          ],
+        ),
       ),
-      bottomNavigationBar: NavigationBar(),
+      bottomNavigationBar: const NavigationBar(),
     );
   }
 }
@@ -113,19 +101,29 @@ class HomeScreen extends StatelessWidget {
 class ClickableRectangle extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
+  final Color backgroundColor;
 
-  const ClickableRectangle(this.title, this.onPressed);
+  const ClickableRectangle(this.title, this.onPressed, this.backgroundColor, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: 100,
-        height: 50,
-        color: Colors.blue,
+        width: 120,
+        height: 70,
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(10.0),
+        ),
         child: Center(
-          child: Text(title),
+          child: Text(
+            title,
+            style: TextStyle(
+              color: Colors.deepPurple,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
     );
@@ -133,10 +131,12 @@ class ClickableRectangle extends StatelessWidget {
 }
 
 class NavigationBar extends StatelessWidget {
+  const NavigationBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profile',
