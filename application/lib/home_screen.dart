@@ -4,6 +4,7 @@ import 'islamicalendar.dart';
 import 'azan.dart';
 import 'qiblah.dart';
 import 'name_screen.dart';
+import 'quotes_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final IslamicCalendarService calendarService = IslamicCalendarService();
@@ -14,7 +15,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Soulful Serenity: Islamic Reflections", style: TextStyle(fontSize: 20)),
+        title: const Text("Soulful Serenity: Islamic Reflections",
+            style: TextStyle(fontSize: 20)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -63,18 +65,19 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => AzanScreen()),
-            );
-          }, const Color.fromARGB(255, 225, 210, 250)),
-          const SizedBox(width: 16), // Add some spacing
-          
-          ClickableRectangle("Qiblat", () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const QiblahScreen()),
-              );
-         }, const Color.fromARGB(255, 225, 210, 250)),
-        ],
-        ),
+                  );
+                }, const Color.fromARGB(255, 225, 210, 250)),
+                const SizedBox(width: 16), // Add some spacing
+
+                ClickableRectangle("Qiblat", () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const QiblahScreen()),
+                  );
+                }, const Color.fromARGB(255, 225, 210, 250)),
+              ],
+            ),
             // more spacing between Azan and 99 Allah's Names
             const SizedBox(height: 16),
             // 99 Allah's Names and Quotes in one row
@@ -84,16 +87,15 @@ class HomeScreen extends StatelessWidget {
                 ClickableRectangle("99 Allah's Names", () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const NamesQuotesScreen()),
-                    );
-                    }, const Color.fromARGB(255, 225, 210, 250)),
-                    const SizedBox(width: 14), // Add some spacing
-                    ClickableRectangle("Quote", () {
+                    MaterialPageRoute(builder: (context) => const NameScreen()),
+                  );
+                }, const Color.fromARGB(255, 225, 210, 250)),
+                const SizedBox(width: 14), // Add some spacing
+                ClickableRectangle("Quote", () {
                   // Handle Quote click
-                  }, const Color.fromARGB(255, 225, 210, 250)),
-                ],
-               ),
-
+                }, const Color.fromARGB(255, 225, 210, 250)),
+              ],
+            ),
           ],
         ),
       ),
@@ -107,7 +109,8 @@ class ClickableRectangle extends StatelessWidget {
   final VoidCallback onPressed;
   final Color backgroundColor;
 
-  const ClickableRectangle(this.title, this.onPressed, this.backgroundColor, {super.key});
+  const ClickableRectangle(this.title, this.onPressed, this.backgroundColor,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {

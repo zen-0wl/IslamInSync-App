@@ -4,14 +4,15 @@ import 'package:location/location.dart';
 import 'qiblah_compass.dart';
 
 class QiblahScreen extends StatefulWidget {
-  const QiblahScreen({super.key});
+  const QiblahScreen({Key? key}) : super(key: key);
 
   @override
   _QiblahScreenState createState() => _QiblahScreenState();
 }
 
 class _QiblahScreenState extends State<QiblahScreen> {
-  final Location location = Location();
+  final MockedLocationProvider locationProvider = MockedLocationProvider();
+  bool isLocationMocked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,18 @@ class _QiblahScreenState extends State<QiblahScreen> {
           }
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          // Toggle between mocked and real location
+          isLocationMocked = !isLocationMocked;
+          if (isLocationMocked) {
+            locationProvider.mockLocation();
+          } else {
+            locationProvider.restoreLocation();
+          }
+        },
+        child: Icon(Icons.location_searching),
+      ),
     );
   }
 
@@ -46,17 +59,56 @@ class _QiblahScreenState extends State<QiblahScreen> {
   }
 
   Future<void> initQiblah() async {
-    final isServiceEnabled = await location.serviceEnabled();
-    final hasLocationPermission = await location.hasPermission();
+    final isServiceEnabled = await locationProvider.serviceEnabled();
+    final hasLocationPermission = await locationProvider.hasPermission();
 
     if (isServiceEnabled == false) {
-      await location.requestService();
+      await locationProvider.requestService();
     }
 
     if (hasLocationPermission == false) {
-      await location.requestPermission();
+      await locationProvider.requestPermission();
     }
 
     // Continue with other location-related operations if needed
+  }
+}
+
+class MockedLocationProvider {
+  final Location _location = Location();
+
+  Future<bool?> serviceEnabled() async {
+    return _location.serviceEnabled();
+  }
+
+  Future<Future<PermissionStatus>> hasPermission() async {
+    return _location.hasPermission();
+  }
+
+  Future<Future<bool>> requestService() async {
+    return _location.requestService();
+  }
+
+  Future<Future<PermissionStatus>> requestPermission() async {
+    return _location.requestPermission();
+  }
+
+  // Mock location for testing purposes
+  void mockLocation() {
+    _location.changeSettings(accuracy: LocationAccuracy.high, interval: 1000);
+    _location.onLocationChanged.listen((LocationData locationData) {
+      // Mocked location
+      locationData = LocationData.fromMap({
+        'latitude': 3.1390, // Kuala Lumpur latitude
+        'longitude': 101.6869, // Kuala Lumpur longitude
+      });
+      // Use the mocked location for your testing
+    });
+  }
+
+  // Restore to real location
+  void restoreLocation() {
+    _location.changeSettings(accuracy: LocationAccuracy.high, interval: 1000);
+    // Restore to real location settings
   }
 }
