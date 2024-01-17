@@ -1,11 +1,23 @@
-// surahs_screen.dart
 
 import 'package:flutter/material.dart';
-import 'SurahAlWaaqia.dart';
-import 'SurahAlMulkPage.dart';
-import 'SurahAnNaasPage copy.dart';
+import 'surah_al_waaqia_page.dart';
+import 'surah_an_naas_page.dart';
+import 'surah_al_mulk_page.dart';
 
-class SurahsScreen extends StatelessWidget {
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
