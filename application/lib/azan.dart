@@ -5,7 +5,9 @@ import 'package:intl/intl.dart';
 class AzanScreen extends StatelessWidget {
   final Coordinates myCoordinates = Coordinates(3.1390, 101.6869);
   final CalculationMethod calculationMethod = CalculationMethod.north_america;
-  final Duration utcOffset = Duration(hours: 8); // local UTC offset
+  final Duration utcOffset = const Duration(hours: 8);
+
+  AzanScreen({super.key}); // local UTC offset
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +16,11 @@ class AzanScreen extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text(">> Prayer Times <<"),
+        title: const Text(">> Prayer Times <<"),
         centerTitle: true,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color.fromARGB(255, 225, 210, 250), // Light purple background
         ),
         child: SingleChildScrollView(
@@ -28,7 +30,7 @@ class AzanScreen extends StatelessWidget {
               const SizedBox(height: 16),
               Text(
                 DateFormat.yMMMMd().format(today),
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.deepPurple),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.deepPurple),
               ),
               const SizedBox(height: 16),
               buildPrayerTimeWidget("Fajr", prayerTimes.fajr, Icons.bedtime, today),
@@ -62,7 +64,7 @@ class AzanScreen extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 title,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.deepPurple),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.deepPurple),
               ),
             ],
           ),
@@ -77,6 +79,6 @@ class AzanScreen extends StatelessWidget {
 
   bool isTimeForPrayer(DateTime now, DateTime prayerTime) {
     // Check if it's the time for the current prayer
-    return now.isAfter(prayerTime) && now.isBefore(prayerTime.add(Duration(minutes: 10))); // Assuming a 10-minute window
+    return now.isAfter(prayerTime) && now.isBefore(prayerTime.add(const Duration(minutes: 10))); // Assuming a 10-minute window
   }
 }

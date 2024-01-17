@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 import 'package:location/location.dart';
+import 'qiblah_compass.dart';
 
 class QiblahScreen extends StatefulWidget {
+  const QiblahScreen({super.key});
+
   @override
   _QiblahScreenState createState() => _QiblahScreenState();
 }
@@ -14,25 +17,23 @@ class _QiblahScreenState extends State<QiblahScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Qiblah Direction"),
+        title: const Text("Qiblah Direction"),
         centerTitle: true,
       ),
-      body: QiblahCompass(
-        onCompassError: (error) => Text("Error: $error"),
-        onQiblahChange: (QiblahDirection qiblah) {
-          // Handle Qiblah direction change
-          print("Qiblah Direction: ${qiblah.direction}");
-          print("North Direction: ${qiblah.north}");
-          print("Qiblah Offset from North: ${qiblah.offset}");
-        },
-        child: (BuildContext context, QiblahContext qiblahContext) {
-          // This is where you can build your UI based on Qiblah direction
-          return Center(
-            child: Text(
-              "Qiblah Direction: ${qiblahContext.qiblah.direction.toStringAsFixed(2)}",
-              style: TextStyle(fontSize: 24),
-            ),
-          );
+      body: FutureBuilder<bool?>(
+        future: FlutterQiblah.androidDeviceSensorSupport(),
+        builder: (context, AsyncSnapshot<bool?> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text("Error: ${snapshot.error}");
+          } else if (snapshot.data == true) {
+            return QiblahCompass();
+          } else {
+            return Center(
+              child: Text("Device sensors not supported."),
+            );
+          }
         },
       ),
     );
@@ -45,14 +46,12 @@ class _QiblahScreenState extends State<QiblahScreen> {
   }
 
   Future<void> initQiblah() async {
-    if (await location.serviceEnabled() && await location.hasPermission()) {
-      QiblahContextProvider.of(context).stream.listen((QiblahContext context) {
-        // Handle Qiblah context changes
-        print("Latitude: ${context.location.latitude}");
-        print("Longitude: ${context.location.longitude}");
-      });
+    final isServiceEnabled = await location.serviceEnabled();
+    final hasLocationPermission = await location.hasPermission();
+
+    if (isServiceEnabled == true && hasLocationPermission == true) {
+      // Continue with other location-related operations if needed
     } else {
-      // Request location permission and enable GPS
       await location.requestService();
       await location.requestPermission();
     }

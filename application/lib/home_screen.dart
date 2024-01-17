@@ -64,13 +64,13 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => AzanScreen()),
             );
-          }, Color.fromARGB(255, 225, 210, 250)),
+          }, const Color.fromARGB(255, 225, 210, 250)),
           const SizedBox(width: 16), // Add some spacing
           
           ClickableRectangle("Qiblat", () {
             Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => QiblahScreen()),
+                MaterialPageRoute(builder: (context) => const QiblahScreen()),
               );
          }, const Color.fromARGB(255, 225, 210, 250)),
         ],
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => const NamesQuotesScreen()),
                     );
-                    }, Color.fromARGB(255, 225, 210, 250)),
+                    }, const Color.fromARGB(255, 225, 210, 250)),
                     const SizedBox(width: 14), // Add some spacing
                     ClickableRectangle("Quote", () {
                   // Handle Quote click
@@ -123,7 +123,7 @@ class ClickableRectangle extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.deepPurple,
               fontWeight: FontWeight.bold,
             ),
