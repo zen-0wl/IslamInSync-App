@@ -92,7 +92,10 @@ class HomeScreen extends StatelessWidget {
                 }, const Color.fromARGB(255, 225, 210, 250)),
                 const SizedBox(width: 14), // Add some spacing
                 ClickableRectangle("Quote", () {
-                  // Handle Quote click
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const QuoteScreen()),
+                    );
                 }, const Color.fromARGB(255, 225, 210, 250)),
               ],
             ),

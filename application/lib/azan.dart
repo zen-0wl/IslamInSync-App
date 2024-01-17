@@ -16,12 +16,12 @@ class AzanScreen extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text(">> Prayer Times <<"),
+        title: const Text("Prayer Times"),
         centerTitle: true,
       ),
       body: Container(
         decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 225, 210, 250), // Light purple background
+          color: Color.fromARGB(255, 246, 241, 255), // Light purple background
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -49,33 +49,42 @@ class AzanScreen extends StatelessWidget {
   Widget buildPrayerTimeWidget(String title, DateTime prayerTime, IconData icon, DateTime today) {
     bool isCurrentPrayer = isTimeForPrayer(DateTime.now(), prayerTime);
 
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Icon(
-                icon,
-                size: 40,
-                color: isCurrentPrayer ? Colors.white : Colors.deepPurple, // Highlight current prayer in white
-              ),
-              const SizedBox(width: 8),
-              Text(
-                title,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.deepPurple),
-              ),
-            ],
-          ),
-          Text(
-            DateFormat.jm().format(prayerTime),
-            style: TextStyle(fontSize: 18, color: isCurrentPrayer ? Colors.white : Colors.deepPurple), // Highlight time in white for current prayer
-          ),
-        ],
+    return Column(
+    children: [
+      Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  icon,
+                  size: 40,
+                  color: isCurrentPrayer ? Colors.white : Colors.deepPurple, // Highlight current prayer in white
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  title,
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.deepPurple),
+                ),
+              ],
+            ),
+            Text(
+              DateFormat.jm().format(prayerTime),
+              style: TextStyle(fontSize: 18, color: isCurrentPrayer ? Colors.white : Colors.deepPurple), // Highlight time in white for current prayer
+            ),
+          ],
+        ),
       ),
-    );
-  }
+      Container(
+        height: 1,
+        color: Colors.deepPurple,
+        margin: const EdgeInsets.symmetric(horizontal: 16),
+      ),
+    ],
+  );
+}
 
   bool isTimeForPrayer(DateTime now, DateTime prayerTime) {
     // Check if it's the time for the current prayer
