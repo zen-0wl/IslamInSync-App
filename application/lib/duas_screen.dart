@@ -58,8 +58,7 @@ class _DuaScreenState extends State<DuaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text('Dua`a'),
           centerTitle: true,
@@ -128,8 +127,7 @@ class _DuaScreenState extends State<DuaScreen> {
           ),
         ),
         bottomNavigationBar: const Home.NavigationBar(),
-      ),
-    );
+      );
   }
 
   void _showDuasDialog(BuildContext context) {

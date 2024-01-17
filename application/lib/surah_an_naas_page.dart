@@ -17,7 +17,7 @@ class _SurahAnNaasPageState extends State<SurahAnNaasPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Surah An-Naas'),
-        backgroundColor: Colors.blue.shade400,
+        backgroundColor: Color.fromARGB(255, 246, 241, 255),
       ),
       body: FutureBuilder(
         future: fetchData(),
@@ -81,7 +81,7 @@ class _SurahAnNaasPageState extends State<SurahAnNaasPage> {
           }
         },
       ),
-      backgroundColor: Colors.blue.shade50,
+      backgroundColor: Color.fromARGB(255, 246, 241, 255),
     );
   }
 

@@ -152,10 +152,6 @@ class NavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profile',
         ),
@@ -171,27 +167,20 @@ class NavigationBar extends StatelessWidget {
       onTap: (index) {
         switch (index) {
           case 0:
-            // Navigate to Home screen
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
-            );
-            break;
-          case 1:
             // Navigate to Profile screen
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ProfileScreen()),
             );
             break;
-          case 2:
+          case 1:
             // Navigate to Duas screen
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => DuaScreen()),
             );
             break;
-          case 3:
+          case 2:
             // Navigate to Surahs screen
             Navigator.push(
               context,

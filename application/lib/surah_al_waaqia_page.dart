@@ -15,7 +15,7 @@ class _SurahAlWaaqiaPageState extends State<SurahAlWaaqiaPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Surah Al-Waaqia'),
-        backgroundColor: Colors.blue.shade400,
+        backgroundColor: Color.fromARGB(255, 246, 241, 255),
       ),
       body: FutureBuilder(
         future: fetchData(),
@@ -70,7 +70,7 @@ class _SurahAlWaaqiaPageState extends State<SurahAlWaaqiaPage> {
           }
         },
       ),
-      backgroundColor: Colors.blue.shade50,
+      backgroundColor: Color.fromARGB(255, 246, 241, 255),
     );
   }
 

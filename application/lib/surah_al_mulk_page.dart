@@ -15,7 +15,7 @@ class _SurahAlMulkPageState extends State<SurahAlMulkPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Surah Al-Mulk'),
-        backgroundColor: Colors.blue.shade400,
+        backgroundColor: Color.fromARGB(255, 246, 241, 255),
       ),
       body: FutureBuilder(
         future: fetchData(),
@@ -79,7 +79,7 @@ class _SurahAlMulkPageState extends State<SurahAlMulkPage> {
           }
         },
       ),
-      backgroundColor: Colors.blue.shade50,
+      backgroundColor: Color.fromARGB(255, 246, 241, 255),
     );
   }
 
