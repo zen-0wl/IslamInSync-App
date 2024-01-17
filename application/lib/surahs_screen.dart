@@ -1,9 +1,9 @@
 // surahs_screen.dart
 
 import 'package:flutter/material.dart';
-import 'package:profile_page_2/SurahALWaaqia.dart';
-import 'package:profile_page_2/SurahAlMulkPage.dart';
-import 'package:profile_page_2/SurahAnNaasPage%20copy.dart';
+import 'SurahAlWaaqia.dart';
+import 'SurahAlMulkPage.dart';
+import 'SurahAnNaasPage copy.dart';
 
 class SurahsScreen extends StatelessWidget {
   @override
