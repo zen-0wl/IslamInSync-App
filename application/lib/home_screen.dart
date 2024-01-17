@@ -181,7 +181,7 @@ class NavigationBar extends StatelessWidget {
             // Navigate to Profile screen
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ProfileScreen()),
+              MaterialPageRoute(builder: (context) => const ProfileScreen()),
             );
             break;
           case 2:
