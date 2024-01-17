@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'islamicalendar.dart';
 import 'azan.dart';
+import 'qiblah.dart';
 import 'name_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -67,7 +68,10 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(width: 16), // Add some spacing
           
           ClickableRectangle("Qiblat", () {
-           // Handle Qiblat click
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => QiblahScreen()),
+              );
          }, const Color.fromARGB(255, 225, 210, 250)),
         ],
         ),
