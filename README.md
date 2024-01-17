@@ -1,7 +1,7 @@
 # IslamInSync App 
 
 ## Project Overview
-IslamInSync is a comprehensive Flutter mobile application designed to serve as a daily Islamic reminder for users, catering to Muslims and those interested in Islamic teachings. The app features essential components, including prayer times, the 99 Allah's names, duas, Quran, Qiblah integration, and a collection of Hadiths. The objective is to offer an Islamic experience, fostering spiritual engagement and knowledge through a user-friendly interface.
+IslamInSync is a straightforward Flutter mobile application designed to serve as a daily Islamic reminder for users, catering to Muslims and those interested in Islamic teachings. The app features essential components, including prayer times, the 99 Allah's names, duas, Quran, Qiblah integration, and a collection of Hadiths. The objective is to offer an Islamic experience, fostering spiritual engagement and knowledge through a user-friendly interface.
 
 ## Project Structure
 The project is structured into different sections:
