@@ -5,6 +5,9 @@ import 'azan.dart';
 import 'qiblah.dart';
 import 'name_screen.dart';
 import 'quotes_screen.dart';
+import 'duas_screen.dart';
+import 'surahs_screen.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final IslamicCalendarService calendarService = IslamicCalendarService();
@@ -94,8 +97,9 @@ class HomeScreen extends StatelessWidget {
                 ClickableRectangle("Hadith Quotes", () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HadithScreen()),
-                    );
+                    MaterialPageRoute(
+                        builder: (context) => const HadithScreen()),
+                  );
                 }, const Color.fromARGB(255, 225, 210, 250)),
               ],
             ),
@@ -148,6 +152,10 @@ class NavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       items: const [
         BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profile',
         ),
@@ -160,6 +168,38 @@ class NavigationBar extends StatelessWidget {
           label: 'Surahs',
         ),
       ],
+      onTap: (index) {
+        switch (index) {
+          case 0:
+            // Navigate to Home screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+            );
+            break;
+          case 1:
+            // Navigate to Profile screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen()),
+            );
+            break;
+          case 2:
+            // Navigate to Duas screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DuaScreen()),
+            );
+            break;
+          case 3:
+            // Navigate to Surahs screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SurahScreen()),
+            );
+            break;
+        }
+      },
     );
   }
 }

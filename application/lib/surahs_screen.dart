@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'surah_al_waaqia_page.dart';
 import 'surah_an_naas_page.dart';
 import 'surah_al_mulk_page.dart';
+import 'home_screen.dart' as Home;
 
 void main() {
   runApp(MyApp());
@@ -12,12 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      home: SurahScreen(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class SurahScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +60,7 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: const Home.NavigationBar(),
     );
   }
 }

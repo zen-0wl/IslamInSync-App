@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'home_screen.dart' as Home;
 
-void main() {
-  runApp(MyApp());
-}
 
 class Dua {
   final String doa;
@@ -29,12 +27,12 @@ class Dua {
   }
 }
 
-class DuaPage extends StatefulWidget {
+class DuaScreen extends StatefulWidget {
   @override
-  _DuaPageState createState() => _DuaPageState();
+  _DuaScreenState createState() => _DuaScreenState();
 }
 
-class _DuaPageState extends State<DuaPage> {
+class _DuaScreenState extends State<DuaScreen> {
   List<Dua> duas = [];
   Dua? selectedDua;
 
@@ -63,7 +61,8 @@ class _DuaPageState extends State<DuaPage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Dua Page'),
+          title: Text('Dua`a'),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Center(
@@ -128,6 +127,7 @@ class _DuaPageState extends State<DuaPage> {
             ),
           ),
         ),
+        bottomNavigationBar: const Home.NavigationBar(),
       ),
     );
   }
@@ -157,16 +157,6 @@ class _DuaPageState extends State<DuaPage> {
           ),
         );
       },
-    );
-  }
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Duas App',
-      home: DuaPage(),
     );
   }
 }

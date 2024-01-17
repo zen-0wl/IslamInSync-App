@@ -11,6 +11,7 @@ class HadithScreen extends StatefulWidget {
 
 class _HadithScreenState extends State<HadithScreen> {
   late List<HadithData> hadiths = [];
+  late http.Response _response;
 
   @override
   void initState() {
@@ -19,24 +20,32 @@ class _HadithScreenState extends State<HadithScreen> {
   }
 
   Future<void> fetchHadiths() async {
-    print("Fetching Hadiths..."); 
-    final response = await http.get(
-  Uri.parse('http://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/eng-abudawud.json'),
-  );
+    print("Fetching Hadiths...");
 
-    print("Received Hadiths response");
+    try {
+      _response = await http.get(
+        Uri.parse('http://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/eng-abudawud.json'),
+      );
 
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
+      print("Received Hadiths response");
 
-      // Assuming 'eng-abudawud' contains an array of hadiths
-      final List<dynamic> engAbuDawudHadiths = data['eng-abudawud'] ?? [];
-
-      hadiths = engAbuDawudHadiths.map((item) => HadithData.fromJson(item)).toList();
-      setState(() {});
-    } else {
-      throw Exception('Failed to load Hadiths');
+      if (mounted) {
+        setState(() {
+          // Assuming 'eng-abudawud' contains an array of hadiths
+          final List<dynamic> engAbuDawudHadiths = jsonDecode(_response.body)['eng-abudawud'] ?? [];
+          hadiths = engAbuDawudHadiths.map((item) => HadithData.fromJson(item)).toList();
+        });
+      }
+    } catch (e) {
+      print("Error fetching Hadiths: $e");
+      // Handle the error appropriately, e.g., show an error message
     }
+  }
+
+  @override
+  void dispose() {
+    // Cancel any asynchronous operations here
+    super.dispose();
   }
 
   @override
