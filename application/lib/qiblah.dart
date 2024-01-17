@@ -49,11 +49,14 @@ class _QiblahScreenState extends State<QiblahScreen> {
     final isServiceEnabled = await location.serviceEnabled();
     final hasLocationPermission = await location.hasPermission();
 
-    if (isServiceEnabled == true && hasLocationPermission == true) {
-      // Continue with other location-related operations if needed
-    } else {
+    if (isServiceEnabled == false) {
       await location.requestService();
+    }
+
+    if (hasLocationPermission == false) {
       await location.requestPermission();
     }
+
+    // Continue with other location-related operations if needed
   }
 }
