@@ -92,6 +92,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "font_awesome_flutter",
+      "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/font_awesome_flutter-9.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "geolocator",
       "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator-10.1.0",
       "packageUri": "lib/",
@@ -128,6 +134,12 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "hadith",
+      "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/hadith-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "http",
       "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.2.0",
       "packageUri": "lib/",
@@ -136,6 +148,12 @@
     {
       "name": "http_parser",
       "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "icons_helper",
+      "rootUri": "file:///C:/Users/zen/AppData/Local/Pub/Cache/hosted/pub.dev/icons_helper-1.2.0-nullsafety.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -278,7 +296,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-01-17T09:35:34.364953Z",
+  "generated": "2024-01-17T14:54:28.418800Z",
   "generator": "pub",
   "generatorVersion": "3.2.4"
 }

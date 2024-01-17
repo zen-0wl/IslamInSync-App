@@ -11,7 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_qiblah: ^2.2.1
+  hadith: ^1.0.0
   http: ^1.2.0
+  icons_helper: ^1.2.0-nullsafety.1
   syncfusion_flutter_datepicker: ^24.1.45
 
 dev_dependencies:

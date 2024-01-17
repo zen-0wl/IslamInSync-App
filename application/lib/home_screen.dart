@@ -29,10 +29,10 @@ class HomeScreen extends StatelessWidget {
               showTodayButton: true,
               showNavigationArrow: true,
               showActionButtons: true,
-              selectionColor: Colors.blue,
-              startRangeSelectionColor: Colors.blue.withOpacity(0.5),
-              endRangeSelectionColor: Colors.blue.withOpacity(0.5),
-              rangeSelectionColor: Colors.blue.withOpacity(0.3),
+              selectionColor: Colors.pink[100],
+              startRangeSelectionColor: Colors.pink[100]?.withOpacity(0.5),
+              endRangeSelectionColor: Colors.pink[100]?.withOpacity(0.5),
+              rangeSelectionColor: Colors.pink[100]?.withOpacity(0.3),
               selectionTextStyle: const TextStyle(color: Colors.white),
               rangeTextStyle: const TextStyle(color: Colors.white),
               onViewChanged: (HijriDatePickerViewChangedArgs args) {
@@ -51,8 +51,8 @@ class HomeScreen extends StatelessWidget {
 
             // Circle icon at the top
             const CircleAvatar(
-              radius: 50,
-              child: Icon(Icons.add), // Placeholder icon
+              radius: 40,
+              child: Icon(Icons.menu_book_rounded), // Placeholder icon
             ),
 
             const SizedBox(height: 16),
@@ -91,10 +91,10 @@ class HomeScreen extends StatelessWidget {
                   );
                 }, const Color.fromARGB(255, 225, 210, 250)),
                 const SizedBox(width: 14), // Add some spacing
-                ClickableRectangle("Quote", () {
+                ClickableRectangle("Hadith Quotes", () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const QuoteScreen()),
+                    MaterialPageRoute(builder: (context) => const HadithScreen()),
                     );
                 }, const Color.fromARGB(255, 225, 210, 250)),
               ],
@@ -156,7 +156,7 @@ class NavigationBar extends StatelessWidget {
           label: 'Duas',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.menu_book),
+          icon: Icon(Icons.bookmark),
           label: 'Surahs',
         ),
       ],
